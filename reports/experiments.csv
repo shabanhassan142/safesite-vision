@@ -1,0 +1,2 @@
+experiment_id,model,imgsz,epochs_run,map50,map50_95,precision,recall,train_time_s,timestamp
+smoke,yolo11n.pt,320,1,0.0005,0.0001,0.0003,0.2,19.3,2026-11-03T07:50:32.161457+00:00

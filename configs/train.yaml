@@ -1,0 +1,42 @@
+# Training configuration for safesite-vision
+# All values are read by scripts/train.py — nothing is hard-coded there.
+# Run experiments by overriding experiment_id, model, and any other key via CLI:
+#   python scripts/train.py --config configs/train.yaml --experiment_id E2 --model yolo11s.pt
+
+# ── Experiment identity ────────────────────────────────────────────────────────
+experiment_id: E1
+model: yolo11n.pt          # yolo11n.pt | yolo11s.pt  (downloaded automatically by Ultralytics)
+data: data/processed/data.yaml
+
+# ── Core hyperparameters ───────────────────────────────────────────────────────
+imgsz: 640
+epochs: 80
+batch: 16
+seed: 42
+patience: 20               # early stopping patience (epochs)
+close_mosaic: 10           # disable mosaic for last N epochs
+
+# ── Output ─────────────────────────────────────────────────────────────────────
+project: models            # run saved to models/<name>/
+name: E1                   # subfolder name; set equal to experiment_id
+
+# ── Augmentation ──────────────────────────────────────────────────────────────
+# NOTE: the training data is already ≥93% mosaic + ~61% cutout.
+# mosaic must be <= 0.3.  erasing (cutout) must be 0.0.
+mosaic: 0.0
+erasing: 0.0               # random erasing / cutout — keep OFF
+hsv_h: 0.015               # hue jitter
+hsv_s: 0.7                 # saturation jitter
+hsv_v: 0.4                 # value jitter
+fliplr: 0.5                # horizontal flip probability
+flipud: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+degrees: 0.0
+mixup: 0.0
+copy_paste: 0.0
+
+# ── Runtime ────────────────────────────────────────────────────────────────────
+workers: 4                 # dataloader workers (set to 0 in CI / Windows if issues arise)

@@ -1,0 +1,35 @@
+# Dataset configuration for safesite-vision
+# Mapping: original_class_id -> new_class_id
+# Classes not listed are dropped (boxes removed, image kept as background if it becomes empty)
+
+source_data: data/raw/css-data
+processed_data: data/processed
+
+# Original class names (for reference)
+original_classes:
+  0: Hardhat
+  1: Mask
+  2: NO-Hardhat
+  3: NO-Mask
+  4: NO-Safety Vest
+  5: Person
+  6: Safety Cone
+  7: Safety Vest
+  8: machinery
+  9: vehicle
+
+# Target class names (new IDs)
+class_names:
+  - person        # 0
+  - hardhat       # 1
+  - no_hardhat    # 2
+  - safety_vest   # 3
+  - no_safety_vest # 4
+
+# Mapping old_id -> new_id (unlisted IDs are dropped)
+class_mapping:
+  5: 0   # Person        -> person
+  0: 1   # Hardhat       -> hardhat
+  2: 2   # NO-Hardhat    -> no_hardhat
+  7: 3   # Safety Vest   -> safety_vest
+  4: 4   # NO-Safety Vest -> no_safety_vest

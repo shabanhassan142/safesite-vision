@@ -1,0 +1,16 @@
+kaggle
+ultralytics
+opencv-python
+supervision
+onnx
+onnxruntime
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+streamlit
+httpx
+pytest
+pytest-cov
+ruff
+pyyaml
